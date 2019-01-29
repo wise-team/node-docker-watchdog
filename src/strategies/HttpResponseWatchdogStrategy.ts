@@ -4,13 +4,10 @@ import { WatchdogStrategy } from "../WatchdogStrategy";
 import Axios from "axios";
 
 export class HttpResponseWatchdogStrategy implements WatchdogStrategy {
-    private currentMetadata: HttpResponseWatchdogStrategy.Metadata;
     private url: string = "http://localhost/";
     private contains: string | undefined = undefined;
 
-    public constructor() {
-        this.currentMetadata = this.generateCurrentMetadata();
-    }
+    public constructor() {}
 
     public withUrl(url: string): HttpResponseWatchdogStrategy {
         ow(url, ow.string.nonEmpty.label("url"));

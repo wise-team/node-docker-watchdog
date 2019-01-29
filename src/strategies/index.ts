@@ -9,4 +9,4 @@ strategiesMap.set(new HttpResponseWatchdogStrategy().getName(), () => new HttpRe
 
 const STRATEGIES_MAP: Readonly<Map<string, () => WatchdogStrategy>> = Object.freeze(strategiesMap);
 
-export { TimeWatchdogStrategy, STRATEGIES_MAP };
+export { TimeWatchdogStrategy, HttpResponseWatchdogStrategy, STRATEGIES_MAP };
