@@ -28,13 +28,8 @@ export class TimeWatchdogStrategy implements WatchdogStrategy {
         return Object.freeze(this.currentMetadata);
     }
 
-    public async isAlive(metadata_: object): Promise<{ alive: boolean; msg: string }> {
-        const metadata = metadata_ as TimeWatchdogStrategy.Metadata;
-        TimeWatchdogStrategy.Metadata.validate(metadata);
-
-        const beatStillValid = Date.now() <= metadata.beatTimestampValidUntilMs;
-        const msg = beatStillValid ? "OK" : `Watchdog ${metadata.identifier}: beat is no longer valid`;
-        return { alive: beatStillValid, msg: msg };
+    public getListener(): WatchdogStrategy.Listener {
+        return new Listener();
     }
 
     private generateCurrentMetadata(ttlMs: number): TimeWatchdogStrategy.Metadata {
@@ -43,6 +38,17 @@ export class TimeWatchdogStrategy implements WatchdogStrategy {
             beatTimestampMs: Date.now(),
             beatTimestampValidUntilMs: Date.now() + ttlMs,
         };
+    }
+}
+
+class Listener implements WatchdogStrategy.Listener {
+    public async isAlive(metadata_: object): Promise<{ alive: boolean; msg: string }> {
+        const metadata = metadata_ as TimeWatchdogStrategy.Metadata;
+        TimeWatchdogStrategy.Metadata.validate(metadata);
+
+        const beatStillValid = Date.now() <= metadata.beatTimestampValidUntilMs;
+        const msg = beatStillValid ? "OK" : `Watchdog ${metadata.identifier}: beat is no longer valid`;
+        return { alive: beatStillValid, msg: msg };
     }
 }
 

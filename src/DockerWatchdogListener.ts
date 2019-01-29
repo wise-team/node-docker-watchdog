@@ -51,7 +51,8 @@ export class DockerWatchdogListener {
             const strategyFactory = STRATEGIES_MAP.get(entity.strategy);
             if (!strategyFactory) return { alive: false, msg: "Strategy not found: " + entity.strategy };
             const strategy = strategyFactory();
-            const alivenessCheckResult = await strategy.isAlive(entity.metadata);
+            const strategyListener = strategy.getListener();
+            const alivenessCheckResult = await strategyListener.isAlive(entity.metadata);
             if (!alivenessCheckResult.alive) return alivenessCheckResult;
         }
         return { alive: true, msg: `${response.length} strategies OK` };
