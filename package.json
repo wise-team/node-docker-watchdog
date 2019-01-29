@@ -1,6 +1,6 @@
 {
   "name": "node-docker-watchdog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Simple watchdog. For node&docker friendship forever. No more stalled loop.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
