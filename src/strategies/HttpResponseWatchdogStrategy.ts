@@ -75,7 +75,7 @@ class Listener implements WatchdogStrategy.Listener {
 
     private checkContains(response: string, contains: string | undefined): boolean {
         if (contains) {
-            const responseContainsString = response.indexOf(contains) >= 0;
+            const responseContainsString = JSON.stringify(response).indexOf(contains) >= 0;
             return responseContainsString;
         }
         return true;
