@@ -4,7 +4,7 @@ import { WatchdogStrategy } from "../WatchdogStrategy";
 import Axios from "axios";
 
 export class HttpResponseWatchdogStrategy implements WatchdogStrategy {
-    private url: string = "http://localhost/";
+    private url: string = "http://127.0.0.1/";
     private contains: string | undefined = undefined;
 
     public constructor() {}
@@ -17,7 +17,7 @@ export class HttpResponseWatchdogStrategy implements WatchdogStrategy {
 
     public thatContains(contains: string): HttpResponseWatchdogStrategy {
         ow(contains, ow.string.nonEmpty.label("url"));
-        this.url = contains;
+        this.contains = contains;
         return this;
     }
 
