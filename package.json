@@ -1,6 +1,6 @@
 {
   "name": "node-docker-watchdog",
-  "version": "1.2.3",
+  "version": "1.2.1",
   "description": "Simple watchdog. For node&docker friendship forever. No more stalled loop.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,7 @@
     "build": "npm run check && npm run build:cleanbefore && npm run build:node && npm run build:lint",
     "prepare": "NODE_ENV=production npm run build",
     "lint-fix": "tslint --fix -c tslint.json -p tsconfig.lint.json",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -22,17 +23,40 @@
     "ow": "^0.8.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "@types/express": "^4.16.1",
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.19",
     "mocha": "^5.2.0",
+    "semantic-release": "^16.0.0-beta.18",
     "ts-node": "^6.2.0",
     "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "wise-tslint-configuration": "^0.2.0"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        0
+      ],
+      "scope-case": [
+        0
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "release": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wise-team/node-docker-watchdog"
+    "url": "https://github.com/wise-team/node-docker-watchdog"
   },
   "keywords": [
     "watchdog"

@@ -1,0 +1,21 @@
+dist: xenial
+language: node_js
+
+install:
+  - npm ci
+
+script:
+  - npm run build
+
+deploy:
+  - provider: script
+    script: npx semantic-release
+    skip_cleanup: true
+    on:
+      tags: false
+      all_branches: true
+
+env:
+  global:
+  - secure: BI30jatBqMHxt59xL+0bSaozdrL7O2KezBLMPPJSarWMEqYErKMoa+5Kj8Yc+JECyi8zq/xkJJNPQcHfLNl9JA/Fe9GZ7Z6s+5ndEkFfs5PH0WmHP9jMkZcnhUCay/7jh20+cCAbJmDKkiHXbibnfc5NFuWyV3HIlgrCkjeT6XCCzOR84b59Cegdv9Ip0i+rhPpwt038fM8sgJkLbSMZJw50VJlW8q9Hoa4PoipjTouytNjV98MBL7bXuJNP2zWorE6nhGeJeWC/XzIm8orjlMS49CsVB4jR6bHNUamQT6mSuSBp3g2hFvwi4K0YgMamQIhYUKPnlU2HdTV0ZxoXF0kJ22BVkgUMnp6VIk9JpiuwGIL/utEzNBr6qtgX+HMu5vZ7g+Jp00veCEgU6qismUKr6AX/uCjMmk+jTsXKC0I0SA/Xbc6MzPmH5D1OQtRh1ERxbsrEIHFc+gQrlvqqCErEu/Puhf9orH7hq8NbJV29ys1Jrt5WcXMaufRlnKmjKrBjGEamnG/u/14ALEwqfX9olNMasOVCvl5/aGAA9NEjWopgaxBjV1jWTAC9EZXx5GEAkRYgrQZ2W3WHF5uN0FxFWz4EK7qVHy6lpy8QpEU3Z7LTOEHtf4h4usdFSvRgPYVvD4KqR29WrhTEjynMubAepY0BtKEG4bLHAAn5EaY=
+  - secure: c6SceJRwU9xcPj6zmXL04H5nbWWwe7yH6kZ/uLC3tXCB7duboZ8PLgaqcWo38OpvRMRmotuGF1/jOSjlywtgKS8teP/NFHlt8HyTnU2fYNov/8YZwx10LeRaBtmuwsXGxg78mUBHGt9gFYCDs9N/TZOGVj9POeSENCulI/f1/z3xvcQgcwmWcnqb1bmnid6YgYtSU0dk/RtgfviwaWiBwxR7ceWmKQWn6YyIBm4ya+lRziZ8YdaO5TDRMjhrSf12U1l+lccC1nL2ZxrLZapzRoFV3ee+LLAhoWcoqENP+z01g5a6GCB6BgmFysfbwe3WZsXdMcSiv2xftlas2vXsX6APnEclL7AFlSY3cdzm5O1b3bJlPcR2s3A5arIiCIR6fWloMUeYYCmcfp87bUf655k1Rqz6kkv3TAGwc3xynTdfm17t7SorC7jwMJSz4K32YVNnCH4AVDer5cNhdq7Rbl4+d0xMJMDCx39avo3ZCiQLLcwcEj74oCKv7CxPBdz1f6vk8LmGhBVrWREtL6CzW7xue1JuQcdtibfd1T6zBqsou785nGs4S+qZKa+mQFehexlOBQn3J7obgQsT2gJ3n6+aYPv+HghatnVy803vQCEk76dTAQI+8uQYiZiMyDlhshdw6XFE9eLNah/X/8T08z+qrcAp2np94duwnt8wMuU=
