@@ -1,5 +1,7 @@
 # node-docker-watchdog
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/wise-team/node-docker-watchdog.svg)](https://greenkeeper.io/)
+
 Simple watchdog. For node&amp;docker friendship forever. No more stalled loop.
 
 ### Healthcheck script
