@@ -1,4 +1,6 @@
+/* tslint:disable:no-console */
 import ow from "ow";
+
 import { DockerWatchdogConfig } from "./DockerWatchdogConfig";
 import { DockerWatchdogListener } from "./DockerWatchdogListener";
 
@@ -16,8 +18,6 @@ export function CliWatchdogHealthcheck(options: CliWatchdogHealthcheck.Options, 
             }
         } catch (error) {
             exitError(options, error);
-            console.error(error);
-            process.exit(3);
         }
     })();
 }

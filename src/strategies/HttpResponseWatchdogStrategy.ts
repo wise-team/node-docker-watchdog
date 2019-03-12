@@ -1,13 +1,11 @@
+import Axios from "axios";
 import ow from "ow";
 
 import { WatchdogStrategy } from "../WatchdogStrategy";
-import Axios from "axios";
 
 export class HttpResponseWatchdogStrategy implements WatchdogStrategy {
     private url: string = "http://127.0.0.1/";
     private contains: string | undefined = undefined;
-
-    public constructor() {}
 
     public withUrl(url: string): HttpResponseWatchdogStrategy {
         ow(url, ow.string.nonEmpty.label("url"));
@@ -42,6 +40,7 @@ export class HttpResponseWatchdogStrategy implements WatchdogStrategy {
     }
 }
 
+/* tslint:disable:max-classes-per-file variable-name */
 class Listener implements WatchdogStrategy.Listener {
     public async isAlive(metadata_: object): Promise<{ alive: boolean; msg: string }> {
         const metadata = metadata_ as HttpResponseWatchdogStrategy.Metadata;
@@ -51,8 +50,9 @@ class Listener implements WatchdogStrategy.Listener {
             const response = await this.getResponse(metadata.url);
 
             const containsResult = this.checkContains(response, metadata.contains);
-            if (!containsResult)
+            if (!containsResult) {
                 return { alive: false, msg: `Response from ${metadata.url} does not contain ${metadata.contains}` };
+            }
 
             return { alive: true, msg: "ok" };
         } catch (error) {
@@ -67,7 +67,8 @@ class Listener implements WatchdogStrategy.Listener {
         } catch (error) {
             if (error.response) {
                 throw new Error(
-                    `Error while fetching ${url}: ${error}. Response: ${error.response.status} ${error.response.data}`
+                    `Error while fetching ${url}:` +
+                        `${error}. Response: ${error.response.status} ${error.response.data}`,
                 );
             } else throw error;
         }

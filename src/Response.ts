@@ -1,6 +1,9 @@
 import ow from "ow";
 
-export type ResponseEntity = { strategy: string; metadata: object };
+export interface ResponseEntity {
+    strategy: string;
+    metadata: object;
+}
 export type Response = ResponseEntity[];
 
 export namespace Response {

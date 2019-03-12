@@ -1,6 +1,7 @@
 import { WatchdogStrategy } from "../WatchdogStrategy";
-import { TimeWatchdogStrategy } from "./TimeWatchdogStrategy";
+
 import { HttpResponseWatchdogStrategy } from "./HttpResponseWatchdogStrategy";
+import { TimeWatchdogStrategy } from "./TimeWatchdogStrategy";
 
 const strategiesMap: Map<string, () => WatchdogStrategy> = new Map();
 

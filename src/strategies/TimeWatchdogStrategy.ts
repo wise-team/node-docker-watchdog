@@ -41,6 +41,7 @@ export class TimeWatchdogStrategy implements WatchdogStrategy {
     }
 }
 
+/* tslint:disable:max-classes-per-file variable-name */
 class Listener implements WatchdogStrategy.Listener {
     public async isAlive(metadata_: object): Promise<{ alive: boolean; msg: string }> {
         const metadata = metadata_ as TimeWatchdogStrategy.Metadata;
@@ -48,7 +49,7 @@ class Listener implements WatchdogStrategy.Listener {
 
         const beatStillValid = Date.now() <= metadata.beatTimestampValidUntilMs;
         const msg = beatStillValid ? "OK" : `Watchdog ${metadata.identifier}: beat is no longer valid`;
-        return { alive: beatStillValid, msg: msg };
+        return { alive: beatStillValid, msg };
     }
 }
 

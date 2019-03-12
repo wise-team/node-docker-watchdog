@@ -1,9 +1,7 @@
-import ow from "ow";
+import Axios from "axios";
 
 import { DockerWatchdogConfig } from "./DockerWatchdogConfig";
-import { WatchdogStrategy } from "./WatchdogStrategy";
 import { Response } from "./Response";
-import Axios from "axios";
 import { STRATEGIES_MAP } from "./strategies";
 
 export class DockerWatchdogListener {
@@ -32,7 +30,7 @@ export class DockerWatchdogListener {
         } catch (error) {
             if (error.response) {
                 throw new Error(
-                    `WatchdogListener got error from remote server: ${error.response.status} - ${error.response.data}`
+                    `WatchdogListener got error from remote server: ${error.response.status} - ${error.response.data}`,
                 );
             } else throw error;
         }

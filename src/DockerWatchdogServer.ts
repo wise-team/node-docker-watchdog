@@ -1,8 +1,9 @@
 import * as express from "express";
 import ow from "ow";
+
 import { DockerWatchdogConfig } from "./DockerWatchdogConfig";
-import { WatchdogStrategy } from "./WatchdogStrategy";
 import { Response, ResponseEntity } from "./Response";
+import { WatchdogStrategy } from "./WatchdogStrategy";
 
 export class DockerWatchdogServer {
     private config: DockerWatchdogConfig;
@@ -15,7 +16,7 @@ export class DockerWatchdogServer {
             ow.array
                 .minLength(1)
                 .ofType(ow.object.is(o => WatchdogStrategy.isWatchdogStrategy(o)))
-                .label("strategies")
+                .label("strategies"),
         );
         this.strategies = strategies;
 
