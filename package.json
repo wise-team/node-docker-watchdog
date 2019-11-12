@@ -31,7 +31,7 @@
     "mocha": "6.0.2",
     "semantic-release": "16.0.0-beta.18",
     "ts-node": "6.2.0",
-    "tslint": "5.13.1",
+    "tslint": "5.20.1",
     "typescript": "2.9.2",
     "wise-tslint-configuration": "0.2.0"
   },
