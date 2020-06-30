@@ -30,7 +30,7 @@
     "@types/node": "10.14.0",
     "mocha": "6.0.2",
     "semantic-release": "16.0.0-beta.18",
-    "ts-node": "6.2.0",
+    "ts-node": "8.10.2",
     "tslint": "5.13.1",
     "typescript": "2.9.2",
     "wise-tslint-configuration": "0.2.0"
